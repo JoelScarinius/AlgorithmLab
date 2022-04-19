@@ -1,0 +1,12 @@
+Algoritm: algoritmnamn
+Input: typ av input
+n antal op
+----------------
+256 x
+512 x
+1024 x
+2048 x
+4096 x
+8192 x
+16384 x
+32768 x
