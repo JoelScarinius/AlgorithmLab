@@ -1,4 +1,6 @@
-unsigned int selectionSortCounted(unsigned int *a, unsigned int n) {
+#include "selectionSort.h"
+
+void selectionSortCounted(unsigned int *a, unsigned int n) {
 
     unsigned int min;
     for (unsigned int i = 0; i < n - 1; i++) {
