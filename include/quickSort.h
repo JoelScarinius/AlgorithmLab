@@ -17,6 +17,4 @@ unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r);
 
 void swap(unsigned int i, unsigned int j, unsigned int arr[]);
 
-void quickSortCounter(unsigned int a[], unsigned int l, unsigned int r, unsigned int *op);
-
 #endif
