@@ -37,3 +37,14 @@ void swap(unsigned int i, unsigned int j, unsigned int arr[])
     arr[i] = arr[j];
     arr[j] = temp;
 }
+
+void quickSortCounter(unsigned int a[], unsigned int l, unsigned int r, unsigned int *op)
+{
+    if(l<r)
+    {
+        op++;
+        unsigned int s = hoarePartition(a, l, r);
+        quicksort(a, l, s-1); 
+        quicksort(a, s+1, r);
+    }
+}
