@@ -1,16 +1,14 @@
 #include "sorting.h"
 #include <stdio.h>
 
-void selectionSort(unsigned int n, unsigned int a, unsigned int *op)
-{
+void selectionSort(unsigned int n, unsigned int a[], unsigned int *op) {
     unsigned int min;
     for (unsigned int i = 0; i < n - 1; i++) {
         min = i;
-        for (unsigned int j = i + 1; j < n; j++)
-        {
+        for (unsigned int j = i + 1; j < n; j++) {
             if(a[j] < a[min]) {
                 min = j;
-                swap(a,j,i); //Critical Operation
+                swap(a,j,i); // Critical Operation
                 op++;
             }
         }
@@ -55,15 +53,15 @@ unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r)
     unsigned int i = l; unsigned int j = r+1;
     do
     {
-        while(a[i]>=p)
+        do {
             i = i+1;
-        
+        } while(a[i]>=p);
         do
         {
             j = j-1;
-        }while(a[j]<=p);
+        } while(a[j]<=p);
         swap(a, i, j);
-    }while(i>=j);
+    } while(i>=j);
     swap(a, i, j);
     swap(a, l, j);
     return j;
