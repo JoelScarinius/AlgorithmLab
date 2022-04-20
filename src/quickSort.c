@@ -1,7 +1,5 @@
-// if l<r
-// s ←Partition(A[l..r]) //s is a split position
-// Quicksort(A[l..s − 1])
-// Quicksort(A[s + 1..r])
+#include "quickSort.h"
+
 void quickSort(unsigned int a[], unsigned int l, unsigned int r)
 {
     if(l<r)

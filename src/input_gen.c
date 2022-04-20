@@ -2,7 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
 unsigned int * orderedArray(unsigned int n)
 {
     unsigned int *arrPtr;
@@ -28,7 +27,7 @@ unsigned int * revOrderedArray(unsigned int n)
     return arrPtr;
 }
 
-unsigned int *RandomOrderedInput (unsigned int n)
+unsigned int *randomOrderedInput (unsigned int n)
 {
     unsigned int *arrPtr;
     arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
