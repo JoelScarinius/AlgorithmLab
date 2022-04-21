@@ -15,6 +15,10 @@ void insertionSort(unsigned int n, unsigned int a[], unsigned int *op);
 //Input: Subarray of array A[0..n − 1], defined by its left and right
 // indices l and r
 //Output: Subarray A[l..r] sorted in nondecreasing order
-void quickSort(unsigned int n, unsigned int a[], unsigned int *op);
+void quickSort(unsigned int a[], unsigned int l, unsigned int r, unsigned int *op);
+
+unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r);
+
+void swap(unsigned int i, unsigned int j, unsigned int arr[]);
 
 #endif

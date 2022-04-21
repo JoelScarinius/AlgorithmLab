@@ -30,13 +30,13 @@ void insertionSort(unsigned int n, unsigned int arr[], unsigned int *op)
     }
 }
 
-void quicksort(unsigned int a[], unsigned int l, unsigned int r)
+void quicksort(unsigned int a[], unsigned int l, unsigned int r, unsigned int *op)
 {
     if(l<r)
     {
         int s = hoarePartition(a, l, r);
-        quicksort(a, l, s-1); 
-        quicksort(a, s+1, r);
+        quicksort(a, l, s-1, &op); 
+        quicksort(a, s+1, r, &op);
     }
 }
 
