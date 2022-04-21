@@ -2,35 +2,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-unsigned int * orderedArray(unsigned int n)
+void orderedArray(unsigned int n, unsigned int *arrPtr)
 {
-    unsigned int *arrPtr;
-    arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));
+    // arrPtr = (void )malloc(n * sizeof(unsigned int));
 
     for (size_t i = 0; i < n; i++)
     {
         arrPtr[i] = i + 1;
     }
-
-    return arrPtr;
+    // return arrPtr;
 }
 
-unsigned int * revOrderedArray(unsigned int n)
+void revOrderedArray(unsigned int n, unsigned int *arrPtr)
 {
-    unsigned int *arrPtr;
-    arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));   
+    // arrPtr = (void )malloc(n * sizeof(unsigned int));   
 
     for (size_t i = 0; i < n; i++)
     {
             arrPtr[i] = n - i;
     }
-    return arrPtr;
+    // return arrPtr;
 }
 
-unsigned int *randomOrderedInput (unsigned int n)
+void randomOrderedInput (unsigned int n, unsigned int *arrPtr)
 {
-    unsigned int *arrPtr;
-    arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
+    // arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
 
     for (size_t i = 0; i < n; i++)
     {
@@ -38,13 +34,12 @@ unsigned int *randomOrderedInput (unsigned int n)
             arrPtr[i] = i + change;
             
     }
-    return arrPtr;
+    // return arrPtr;
 }
 
-unsigned int * random4OrderedInput(unsigned int n)
+unsigned int * random4OrderedInput(unsigned int n, unsigned int *arrPtr)
 {
-    unsigned int *arrPtr;
-    arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
+    // arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
     for (size_t i = 0; i < n; i++)
     {    
         arrPtr[i] = i + 1; 
@@ -53,7 +48,7 @@ unsigned int * random4OrderedInput(unsigned int n)
                 swap(arrPtr,i,i-2);
             }
     }
-    return arrPtr;
+    // return arrPtr;
 }
 
 void printArray(int *arr, int n)
@@ -62,4 +57,11 @@ void printArray(int *arr, int n)
     for (i = 0; i < n; i++)
         printf("%d ", arr[i]);
     printf("\n");
+}
+
+void swap(unsigned int *arrPtr, unsigned int i,unsigned int  i2)
+{
+    unsigned int temp = arrPtr[i];
+    arrPtr[i] = arrPtr[i2];
+    arrPtr[i2] = temp;
 }
