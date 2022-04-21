@@ -5,8 +5,8 @@ void quickSort(unsigned int a[], unsigned int l, unsigned int r)
     if(l<r)
     {
         unsigned int s = hoarePartition(a, l, r);
-        quicksort(a, l, s-1); 
-        quicksort(a, s+1, r);
+        quickSort(a, l, s-1); 
+        quickSort(a, s+1, r);
     }
 }
 
@@ -29,7 +29,7 @@ unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r)
     return j;
 }
 
-void swap(unsigned int i, unsigned int j, unsigned int arr[])
+void swap(unsigned int arr[], unsigned int i, unsigned int j)
 {
     unsigned int temp = arr[i];
     arr[i] = arr[j];
@@ -42,7 +42,7 @@ void quickSortCounter(unsigned int a[], unsigned int l, unsigned int r, unsigned
     {
         op++;
         unsigned int s = hoarePartition(a, l, r);
-        quicksort(a, l, s-1); 
-        quicksort(a, s+1, r);
+        quickSort(a, l, s-1); 
+        quickSort(a, s+1, r);
     }
 }

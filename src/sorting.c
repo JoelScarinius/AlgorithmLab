@@ -35,8 +35,8 @@ void quicksort(unsigned int a[], unsigned int l, unsigned int r, unsigned int *o
     if(l<r)
     {
         int s = hoarePartition(a, l, r);
-        quicksort(a, l, s-1, &op); 
-        quicksort(a, s+1, r, &op);
+        quicksort(a, l, s-1, op); 
+        quicksort(a, s+1, r, op);
     }
 }
 
