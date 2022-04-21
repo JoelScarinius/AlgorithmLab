@@ -37,7 +37,7 @@ void randomOrderedInput (unsigned int n, unsigned int *arrPtr)
     // return arrPtr;
 }
 
-unsigned int * random4OrderedInput(unsigned int n, unsigned int *arrPtr)
+void random4OrderedInput(unsigned int n, unsigned int *arrPtr)
 {
     // arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
     for (size_t i = 0; i < n; i++)

@@ -1,7 +1,7 @@
 #include "selectionSort.h"
 
-void selectionSortCounted(unsigned int *a, unsigned int n) {
-
+void selectionSort(unsigned int *a, unsigned int n) 
+{
     unsigned int min;
     for (unsigned int i = 0; i < n - 1; i++) {
         min = i;
@@ -14,4 +14,11 @@ void selectionSortCounted(unsigned int *a, unsigned int n) {
             }
         }
     }
+}
+
+void swap(unsigned int *a, unsigned int i, unsigned int j)
+{
+    unsigned int temp = a[i];
+    a[i] = a[j];
+    a[j] = temp;
 }
