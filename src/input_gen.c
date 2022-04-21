@@ -4,51 +4,40 @@
 
 void orderedArray(unsigned int n, unsigned int *arrPtr)
 {
-    // arrPtr = (void )malloc(n * sizeof(unsigned int));
-
     for (size_t i = 0; i < n; i++)
     {
         arrPtr[i] = i + 1;
     }
-    // return arrPtr;
 }
 
 void revOrderedArray(unsigned int n, unsigned int *arrPtr)
 {
-    // arrPtr = (void )malloc(n * sizeof(unsigned int));   
-
     for (size_t i = 0; i < n; i++)
     {
             arrPtr[i] = n - i;
     }
-    // return arrPtr;
 }
 
 void randomOrderedInput (unsigned int n, unsigned int *arrPtr)
 {
-    // arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
-
     for (size_t i = 0; i < n; i++)
     {
-            int change = rand() % n + 1;
-            arrPtr[i] = i + change;
-            
+        int change = rand() % n + 1;
+        arrPtr[i] = i + change;
     }
-    // return arrPtr;
 }
 
 void random4OrderedInput(unsigned int n, unsigned int *arrPtr)
 {
-    // arrPtr = (unsigned int *)malloc(n * sizeof(unsigned int));  
     for (size_t i = 0; i < n; i++)
     {    
         arrPtr[i] = i + 1; 
-           if (1 + rand() % 100 <= 4)
-            {
-                swap2(arrPtr,i,i-2);
-            }
+        if (1 + rand() % 100 <= 4)
+        {
+            unsigned int j = (i*2 > n-1) ? i-2 : i*2;
+            swap2(arrPtr,i,i);
+        }
     }
-    // return arrPtr;
 }
 
 void printArray(int *arr, int n)
