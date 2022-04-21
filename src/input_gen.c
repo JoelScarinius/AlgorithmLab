@@ -45,7 +45,7 @@ void random4OrderedInput(unsigned int n, unsigned int *arrPtr)
         arrPtr[i] = i + 1; 
            if (1 + rand() % 100 <= 4)
             {
-                swap(arrPtr,i,i-2);
+                swap2(arrPtr,i,i-2);
             }
     }
     // return arrPtr;
@@ -59,7 +59,7 @@ void printArray(int *arr, int n)
     printf("\n");
 }
 
-void swap(unsigned int *arrPtr, unsigned int i,unsigned int  i2)
+void swap2(unsigned int *arrPtr, unsigned int i,unsigned int  i2)
 {
     unsigned int temp = arrPtr[i];
     arrPtr[i] = arrPtr[i2];
