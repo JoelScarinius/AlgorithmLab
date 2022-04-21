@@ -7,11 +7,11 @@
 
 int main(int argc, char const *argv[])
 {
-    unsigned int n = INPUT_SIZE, *a, op = 0, option = 0, count = 30, totOp = 0, avrOp = 0;
+    unsigned int n = INPUT_SIZE, *a, op = 0, option = 0, count = 30, totOp = 0, avrOp = 0, l, r;
     char algorithm[15], inputType[15];
 
     randomOrderedInput(n, a);
-    // quickSort(n, a, &op);
+    quickSort(a, l, r, &op);
     // while (option != 4)
     // {
     //     displayMainMenu();
