@@ -2,6 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+static void swap(unsigned int *arrPtr, unsigned int i, unsigned int  i2);
+
 void orderedArray(unsigned int n, unsigned int *arrPtr)
 {
     for (size_t i = 0; i < n; i++)
@@ -48,7 +50,7 @@ void printArray(int *arr, int n)
     printf("\n");
 }
 
-void swap2(unsigned int *arrPtr, unsigned int i,unsigned int  i2)
+static void swap(unsigned int *arrPtr, unsigned int i,unsigned int  i2)
 {
     unsigned int temp = arrPtr[i];
     arrPtr[i] = arrPtr[i2];

@@ -4,19 +4,19 @@
 #include "fileHandling.h"
 #include <time.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define INPUT_SIZE 256
 #define ARRAY_SIZE 32768
 
 static void displayMainMenu();
-static void simSelectionSort(unsigned int n, unsigned int a[], unsigned int totOp, unsigned int avrOp, unsigned int *op, unsigned int count);
-static void simInsertionSort(unsigned int n, unsigned int a[], unsigned int totOp, unsigned int avrOp, unsigned int *op, unsigned int count);
-// static void simQuickSort(unsigned int n, unsigned int a[], unsigned int totOp, unsigned int avrOp, unsigned int *op, unsigned int count);
+static void simSortAlgo(char algorithm[]);
 
 int main(int argc, char const *argv[])
 {
     srand(time(NULL));
-    unsigned int n = INPUT_SIZE, a[ARRAY_SIZE], op = 0, option = 0, count = 30, totOp = 0, avrOp = 0, l = 0, r = 7;
+    unsigned int option = 0;
+    
     
     while (option != 4)
     {
@@ -25,9 +25,9 @@ int main(int argc, char const *argv[])
         scanf("%d", &option);
         switch (option)
         {
-        case 1: simSelectionSort(n, a, totOp, avrOp, &op, count); break;
-        case 2: simInsertionSort(n, a, totOp, avrOp, &op, count); break;
-        // case 3: simQucikSort(n, a, totOp, avrOp, &op, count); break;
+        case 1: simSortAlgo("Selection sort"); break;
+        case 2: simSortAlgo("Insertion sort"); break;
+        case 3: simSortAlgo("Qucik sort"); break;
         case 4: exit(-1); break;
         default: puts("Invalid input, please try again!"); break;
         }
@@ -37,7 +37,7 @@ int main(int argc, char const *argv[])
 
 static void displayMainMenu()
 {
-    puts("Please choose an algorithm\n"
+    puts("\nPlease choose an algorithm\n"
          "1. SelectionSort\n"
          "2. InsertionSort\n"
          "3. QuickSort\n"
@@ -45,108 +45,65 @@ static void displayMainMenu()
     printf("Your choice? : ");
 }
 
-static void simSelectionSort(unsigned int n, unsigned int a[], unsigned int totOp, unsigned int avrOp, unsigned int *op, unsigned int count)
+static void simSortAlgo(char algorithm[])
 {
-    printHeaderToFile("Selection sort", "Ordered");
-    while (n <= ARRAY_SIZE)
-    {
-        orderedArray(n, a); // Ordnad input 
-        selectionSort(n, a, op);// selectionSort
-        printResultsToFile(n, op);
-        n *= 2;
-        *op = 0;
-    }
-    printHeaderToFile("Selection sort", "Reversed Ordered");
-    n = INPUT_SIZE;
-    while (n <= ARRAY_SIZE)
-    {
-        revOrderedArray(n, a); // Omvänd ordnad input 
-        selectionSort(n, a, op);
-        printResultsToFile(n, op);
-        n *= 2;
-        *op = 0;
-    }
-    printHeaderToFile("Selection sort", "Random Ordered");
-    n = INPUT_SIZE;
-    while (n <= ARRAY_SIZE)
-    {
-        for (size_t i = 1; i <= count; i++)
-        {
-            randomOrderedInput(n, a);
-            selectionSort(n, a, op);
-            totOp += *op;
-            *op = 0;
-        }
-        avrOp = totOp/30;
-        printResultsToFile(n, &avrOp);
-        avrOp = totOp = 0;
-        n *= 2;
-    }
-    printHeaderToFile("Selection sort", "Almost Ordered");
-    n = INPUT_SIZE;
-    while (n <= ARRAY_SIZE)
-    {
-        for (size_t i = 1; i <= count; i++)
-        {
-            random4OrderedInput(n, a);
-            selectionSort(n, a, op);
-            totOp += *op;
-            *op = 0;
-        }
-        avrOp = totOp/30;
-        printResultsToFile(n, &avrOp);
-        avrOp = totOp = 0;
-        n *= 2;
-    }
-}
+    unsigned int n = INPUT_SIZE, l = 0, r = n-1, count = 30, a[ARRAY_SIZE];
+    size_t totOp = 0, avrOp = 0, op = 0;
+    
 
-static void simInsertionSort(unsigned int n, unsigned int a[], unsigned int totOp, unsigned int avrOp, unsigned int *op, unsigned int count)
-{
-    printHeaderToFile("Insertion sort", "Ordered");
+    printHeaderToFile(algorithm, "Ordered");
     while (n <= ARRAY_SIZE)
     {
-        orderedArray(n, a); // Ordnad input 
-        insertionSort(n, a, op);// insertionSort
-        printResultsToFile(n, op);
+        orderedArray(n, a); // Ordnad input
+        if (strcmp(algorithm, "Selection sort") == 0) selectionSort(n, a, &op);// selectionSort
+        else if (strcmp(algorithm, "Insertion sort") == 0) insertionSort(n, a, &op);// insertionSort
+        else quickSort(a, l, r, &op);// quickSort
+        printResultsToFile(n, &op);
         n *= 2;
-        *op = 0;
+        op = 0;
     }
-    printHeaderToFile("Insertion sort", "Reversed Ordered");
+    printHeaderToFile(algorithm, "Reversed Ordered");
     n = INPUT_SIZE;
     while (n <= ARRAY_SIZE)
     {
         revOrderedArray(n, a); // Omvänd ordnad input 
-        insertionSort(n, a, op);
-        printResultsToFile(n, op);
+        if (strcmp(algorithm, "Selection sort") == 0) selectionSort(n, a, &op);// selectionSort
+        else if (strcmp(algorithm, "Insertion sort") == 0) insertionSort(n, a, &op);// insertionSort
+        else quickSort(a, l, r, &op);// quickSort
+        printResultsToFile(n, &op);
         n *= 2;
-        *op = 0;
+        op = 0;
     }
-    printHeaderToFile("Insertion sort", "Random Ordered");
+    printHeaderToFile(algorithm, "Random Ordered");
     n = INPUT_SIZE;
     while (n <= ARRAY_SIZE)
     {
         for (size_t i = 1; i <= count; i++)
         {
             randomOrderedInput(n, a);
-            insertionSort(n, a, op);
-            totOp += *op;
-            *op = 0;
+            if (strcmp(algorithm, "Selection sort") == 0) selectionSort(n, a, &op);// selectionSort
+            else if (strcmp(algorithm, "Insertion sort") == 0) insertionSort(n, a, &op);// insertionSort
+            else quickSort(a, l, r, &op);// quickSort
+            totOp += op;
+            op = 0;
         }
         avrOp = totOp/30;
         printResultsToFile(n, &avrOp);
         avrOp = totOp = 0;
         n *= 2;
     }
-    printHeaderToFile("Insertion sort", "Almost Ordered");
+    printHeaderToFile(algorithm, "Almost Ordered");
     n = INPUT_SIZE;
     while (n <= ARRAY_SIZE)
     {
         for (size_t i = 1; i <= count; i++)
         {
             random4OrderedInput(n, a);
-            insertionSort(n, a, op);
-            totOp += *op;
-            *op = 0;
+            if (strcmp(algorithm, "Selection sort") == 0) selectionSort(n, a, &op);// selectionSort
+            else if (strcmp(algorithm, "Insertion sort") == 0) insertionSort(n, a, &op);// insertionSort
+            else quickSort(a, l, r, &op);// quickSort
+            totOp += op;
+            op = 0;
         }
         avrOp = totOp/30;
         printResultsToFile(n, &avrOp);
