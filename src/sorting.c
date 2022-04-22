@@ -1,11 +1,16 @@
 #include "sorting.h"
 #include <stdio.h>
 
-void selectionSort(unsigned int n, unsigned int a[], unsigned int *op) {
+static unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r);
+
+static void swap(unsigned int arr[], unsigned int i, unsigned int j);
+
+
+void selectionSort(unsigned int n, unsigned int a[], size_t *op) {
     unsigned int min;
-    for (unsigned int i = 0; i <= n - 2; i++) {
+    for (size_t i = 0; i <= n - 2; i++) {
         min = i;
-        for (unsigned int j = i + 1; j <= n-1; j++) {
+        for (size_t j = i + 1; j <= n-1; j++) {
             if(a[j] < a[min]) min = j;
             *op += 1;
         }
@@ -13,7 +18,7 @@ void selectionSort(unsigned int n, unsigned int a[], unsigned int *op) {
     }
 }
 
-void insertionSort(unsigned int n, unsigned int arr[], unsigned int *op)
+void insertionSort(unsigned int n, unsigned int arr[], size_t *op)
 {
     for (size_t i = 1; i <= n-1; i++)
     {
@@ -29,9 +34,9 @@ void insertionSort(unsigned int n, unsigned int arr[], unsigned int *op)
     }
 }
 
-void quickSort(unsigned int a[], unsigned int l, unsigned int r, unsigned int *op)
+void quickSort(unsigned int a[], unsigned int l, unsigned int r, size_t *op)
 {
-    if(l<r)
+    if(l < r)
     {
         *op += 1;
         unsigned int s = hoarePartition(a, l, r);
@@ -40,29 +45,23 @@ void quickSort(unsigned int a[], unsigned int l, unsigned int r, unsigned int *o
     }
 }
 
-void swap(unsigned int a[], unsigned int i, unsigned int min)
+static void swap(unsigned int a[], unsigned int i, unsigned int min)
 {
     unsigned int temp = a[i];
     a[i] = a[min];
     a[min] = temp;
 }
 
-unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r)
+static unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r)
 {
-    unsigned int p = a[l], i = l, j = r+1;
-    do
+    unsigned int p = l, i = l, j = r;
+    
+    while(i < j);
     {
-        do
-        {
-            i = i+1;
-        } while(a[i] <= p);
-        do
-        {
-            j = j-1;
-        } while(a[j] >= p);
-        swap(a, i, j);
-    } while(i>=j);
-    swap(a, i, j); // undo last swap when i >= j
-    swap(a, l, j);
+        while(a[i] <= a[p] && i < j) i++; 
+        while(a[j] > a[p]) j--;  
+        if (i < j) swap(a, i, j); // undo last swap when i >= j
+    }   
+    swap(a, p, j);
     return j;
 }

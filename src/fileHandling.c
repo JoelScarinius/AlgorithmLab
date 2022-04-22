@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "fileHandling.h"
 
 void printHeaderToFile(char algorithm[], char inputType[])
@@ -13,7 +14,7 @@ void printHeaderToFile(char algorithm[], char inputType[])
     fclose(fPtr); // When done reading the file the connection to the file is closed.
 }
 
-void printResultsToFile(unsigned int n, unsigned int *op)
+void printResultsToFile(unsigned int n, size_t *op)
 {
     FILE *fPtr = fopen("Results.txt", "a");
 
