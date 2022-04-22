@@ -37,7 +37,7 @@ void random4OrderedInput(unsigned int n, unsigned int *arrPtr)
         if (1 + rand() % 100 <= 4)
         {
             unsigned int j = (i*2 > n-1) ? i-2 : i*2;
-            swap2(arrPtr,i,i);
+            swap(arrPtr,i,i);
         }
     }
 }
