@@ -17,7 +17,6 @@ int main(int argc, char const *argv[])
     srand(time(NULL));
     unsigned int option = 0;
     
-    
     while (option != 4)
     {
         displayMainMenu();
@@ -49,21 +48,31 @@ static void simSortAlgo(char algorithm[])
 {
     unsigned int n = INPUT_SIZE, l = 0, r = n-1, count = 30, a[ARRAY_SIZE];
     size_t totOp = 0, avrOp = 0, op = 0;
-    
 
     printHeaderToFile(algorithm, "Ordered");
     while (n <= ARRAY_SIZE)
     {
         orderedArray(n, a); // Ordnad input
+        // if (n == ARRAY_SIZE)
+        // {
+        //     printf("\n");
+        //     printArray(a, n);
+        // }
         if (strcmp(algorithm, "Selection sort") == 0) selectionSort(n, a, &op);// selectionSort
         else if (strcmp(algorithm, "Insertion sort") == 0) insertionSort(n, a, &op);// insertionSort
         else quickSort(a, l, r, &op);// quickSort
+        if (n == ARRAY_SIZE)
+        // {
+        //     printf("\n");
+        //     printArray(a, n);
+        // }
         printResultsToFile(n, &op);
         n *= 2;
+        r = n-1;
         op = 0;
     }
     printHeaderToFile(algorithm, "Reversed Ordered");
-    n = INPUT_SIZE;
+    n = r = INPUT_SIZE;
     while (n <= ARRAY_SIZE)
     {
         revOrderedArray(n, a); // Omvänd ordnad input 
@@ -72,10 +81,11 @@ static void simSortAlgo(char algorithm[])
         else quickSort(a, l, r, &op);// quickSort
         printResultsToFile(n, &op);
         n *= 2;
+        r = n-1;
         op = 0;
     }
     printHeaderToFile(algorithm, "Random Ordered");
-    n = INPUT_SIZE;
+    n = r = INPUT_SIZE;
     while (n <= ARRAY_SIZE)
     {
         for (size_t i = 1; i <= count; i++)
@@ -91,9 +101,11 @@ static void simSortAlgo(char algorithm[])
         printResultsToFile(n, &avrOp);
         avrOp = totOp = 0;
         n *= 2;
+        r = n-1;
+        op = 0;
     }
     printHeaderToFile(algorithm, "Almost Ordered");
-    n = INPUT_SIZE;
+    n = r = INPUT_SIZE;
     while (n <= ARRAY_SIZE)
     {
         for (size_t i = 1; i <= count; i++)
@@ -109,5 +121,7 @@ static void simSortAlgo(char algorithm[])
         printResultsToFile(n, &avrOp);
         avrOp = totOp = 0;
         n *= 2;
+        r = n-1;
+        op = 0;
     }
 }

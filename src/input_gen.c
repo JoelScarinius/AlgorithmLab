@@ -1,43 +1,44 @@
 #include "input_gen.h"
+#include "sorting.h"
 #include <stdio.h>
 #include <stdlib.h>
 
-static void swap(unsigned int *arrPtr, unsigned int i, unsigned int  i2);
+// static void swap(int a[], int i, int  i2);
 
-void orderedArray(unsigned int n, unsigned int *arrPtr)
+void orderedArray(int n, int a[])
 {
-    for (size_t i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-        arrPtr[i] = i + 1;
+        a[i] = i + 1;
     }
 }
 
-void revOrderedArray(unsigned int n, unsigned int *arrPtr)
+void revOrderedArray(int n, int a[])
 {
-    for (size_t i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
-            arrPtr[i] = n - i;
+        a[i] = n - i;
     }
 }
 
-void randomOrderedInput (unsigned int n, unsigned int *arrPtr)
+void randomOrderedInput(int n, int a[])
 {
-    for (size_t i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {
         int change = rand() % n + 1;
-        arrPtr[i] = i + change;
+        a[i] = i + change;
     }
 }
 
-void random4OrderedInput(unsigned int n, unsigned int *arrPtr)
+void random4OrderedInput(int n, int a[])
 {
-    for (size_t i = 0; i < n; i++)
+    for (int i = 0; i < n; i++)
     {    
-        arrPtr[i] = i + 1; 
+        a[i] = i + 1; 
         if (1 + rand() % 100 <= 4)
         {
-            unsigned int j = (i*2 > n-1) ? i-2 : i*2;
-            swap(arrPtr,i,i);
+            int j = (i*2 > n-1) ? i-2 : i*2;
+            swap(a,i,j);
         }
     }
 }
@@ -50,9 +51,9 @@ void printArray(int *arr, int n)
     printf("\n");
 }
 
-static void swap(unsigned int *arrPtr, unsigned int i,unsigned int  i2)
-{
-    unsigned int temp = arrPtr[i];
-    arrPtr[i] = arrPtr[i2];
-    arrPtr[i2] = temp;
-}
+// static void swap(int a[], int i,int  i2)
+// {
+//     int temp = a[i];
+//     a[i] = a[i2];
+//     a[i2] = temp;
+// }

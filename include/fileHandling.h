@@ -5,6 +5,6 @@
 
 void printHeaderToFile(char algorithm[], char inputType[]);
 
-void printResultsToFile(unsigned int n, size_t *op);
+void printResultsToFile(int n, size_t *op);
 
 #endif
