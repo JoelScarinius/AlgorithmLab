@@ -53,7 +53,7 @@ void swap(unsigned int a[], unsigned int i, unsigned int j)
 
 static unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r, size_t *op)
 {
-    unsigned int p = a[l], i = l, j = r+1;
+    unsigned int p = a[l], j = r+1, i = l;
     while(i < j) 
     {
         do
@@ -65,10 +65,10 @@ static unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned in
         {
             *op += 1; // Counts the number of operations preformed.
             j--; 
-        } while(a[j] > p && j != 1);
+        } while(a[j] > p && j > l);
         swap(a, i, j);
     }
-    if (i >= j) swap(a, i, j); // undo last swap when i >= j
+    swap(a, i, j); // undo last swap when i >= j
     swap(a, l, j);
-    return j;
+    return j = (j == 0) ? j + 1 : j;
 }
