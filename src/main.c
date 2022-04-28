@@ -50,7 +50,7 @@ static void displayMainMenu()
 
 static void simSortAlgo(char algorithm[]) // Runs an algorithm with all different input sizes and types, also counts op.
 {
-    unsigned int n = INPUT_SIZE, l = 0, r = n-1, numRuns = 30, arr[ARRAY_SIZE];
+    unsigned int n = INPUT_SIZE, r = n-1, l = 0, numRuns = 30, arr[ARRAY_SIZE];
     size_t totOp = 0, avrOp = 0, op = 0;
 
     printHeaderToFile(algorithm, "Ordered"); // Prints a header to our text file.
@@ -79,7 +79,7 @@ static void simSortAlgo(char algorithm[]) // Runs an algorithm with all differen
         op = 0; // Resets the counter to 0 before next iteration starts.
     }
     printHeaderToFile(algorithm, "Random Ordered"); // Prints a header to our text file.
-    n = r = INPUT_SIZE; // Resets input to starting input size
+    // n = r = INPUT_SIZE; // Resets input to starting input size
     while (n <= ARRAY_SIZE) // Runs until all input sizes have been handled.
     {
         for (size_t i = 1; i <= numRuns; i++)
