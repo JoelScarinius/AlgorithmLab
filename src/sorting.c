@@ -1,24 +1,24 @@
 #include "sorting.h"
 #include <stdio.h>
 
-static int hoarePartition(int a[], int l, int r, size_t *op);
-
-// static void swap(int a[], int i, int j);
+static unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r, size_t *op);
 
 
-void selectionSort(int n, int a[], size_t *op) {
-    int min;
-    for (size_t i = 0; i <= n - 2; i++) {
-        min = i;
-        for (size_t j = i + 1; j <= n-1; j++) {
-            if(a[j] < a[min]) min = j;
-            *op += 1;
+void selectionSort(unsigned int n, unsigned int a[], size_t *op) {
+    
+    for (size_t i = 0; i <= n - 2; i++) 
+    {
+        unsigned int min = i;
+        for (size_t j = i + 1; j <= n-1; j++) 
+        {
+            if(a[j] < a[min]) min = j; // Critical Operation
+            *op += 1; // Counts the number of operations preformed.
         }
-        swap(a,i,min); // Critical Operation
+        swap(a,i,min); 
     }
 }
 
-void insertionSort(int n, int a[], size_t *op)
+void insertionSort(unsigned int n, unsigned int a[], size_t *op)
 {
     for (size_t i = 1; i <= n-1; i++)
     {
@@ -34,46 +34,41 @@ void insertionSort(int n, int a[], size_t *op)
     }
 }
 
-void quickSort(int a[], int l, int r, size_t *op)
+void quickSort(unsigned int a[], unsigned int l, unsigned int r, size_t *op)
 {
     if(l < r)
     {
-        // *op += 1;
-        int s = hoarePartition(a, l, r, op);
+        unsigned int s = hoarePartition(a, l, r, op);
         quickSort(a, l, s-1, op); 
         quickSort(a, s+1, r, op);
     }
 }
 
-void swap(int a[], int i, int j)
+void swap(unsigned int a[], unsigned int i, unsigned int j)
 {
-    int temp = a[i];
+    unsigned int temp = a[i];
     a[i] = a[j];
     a[j] = temp;
 }
 
-static int hoarePartition(int a[], int l, int r, size_t *op)
+static unsigned int hoarePartition(unsigned int a[], unsigned int l, unsigned int r, size_t *op)
 {
-    // *op += 1;
-    // printf("Partion called\n");
-    int p = a[l];
-    int i = l, j = r+1;
+    unsigned int p = a[l], i = l, j = r+1;
     while(i < j) 
     {
         do
         {
-            *op += 1;
+            *op += 1; // Counts the number of operations preformed.
             i++;
         } while(a[i] < p && i < r); 
         do
         {
-            *op += 1;
+            *op += 1; // Counts the number of operations preformed.
             j--; 
-            // printf("%d\t%d\n",i, j);
-        } while(a[j] > p);
+        } while(a[j] > p && j != 1);
         swap(a, i, j);
     }
-    swap(a, i, j); // undo last swap when i >= j
+    if (i >= j) swap(a, i, j); // undo last swap when i >= j
     swap(a, l, j);
     return j;
 }

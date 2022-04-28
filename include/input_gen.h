@@ -1,10 +1,21 @@
 #ifndef input_gen_H_
 #define input_gen_H_
 
-void orderedArray(int n, int *arrPtr);
-void revOrderedArray(int n, int *arrPtr);
-void printArray(int *arr, int n);
-void randomOrderedInput (int n, int *arrPtr);
-void random4OrderedInput(int n, int *arrPtr);
+// Inserts ordered elements to an array.
+// Input: An array and the size of the array
+// Output: Void
+void orderedInput(unsigned int n, unsigned int arr[]);
+// Inserts reversed ordered elements to an array.
+// Input: An array and the size of the array
+// Output: Void
+void revOrderedInput(unsigned int n, unsigned int arr[]);
+// Inserts random ordered elements to an array.
+// Input: An array and the size of the array
+// Output: Void
+void randomOrderedInput (unsigned int n, unsigned int arr[]);
+// Inserts almost ordered elements to an array.
+// Input: An array and the size of the array
+// Output: Void
+void almostOrderedInput(unsigned int n, unsigned int arr[]);
 
 #endif
